@@ -1,0 +1,15 @@
+<html>
+  <head>
+    <title>Foundation of Backend</title>
+  </head>
+  <body>
+    <button id="btn">Fetch</button>
+  </body>
+  <script>
+    document.getElementById("btn").addEventListener("click",async()=>{
+      const res=await fetch("http://localhost:300/");
+      const json=await res.json();
+      console.log(json);
+    });
+  </script>
+</html>
