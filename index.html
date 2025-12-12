@@ -4,12 +4,16 @@
   </head>
   <body>
     <button id="btn">Fetch</button>
+    <pre id="fetched"></pre>
   </body>
   <script>
-    document.getElementById("btn").addEventListener("click",async()=>{
-      const res=await fetch("http://localhost:300/");
-      const json=await res.json();
-      console.log(json);
-    });
+      const out=document.getElementById("fetched");
+      let clickCount=0;
+      document.getElementById("btn").addEventListener("click",async()=>{
+        clickCount++;
+        const res=await fetch(`http://localhost:3000/${clickCount}`);
+        const json=await res.json();
+        out.textContent=JSON.stringify(json,null,2);
+      });
   </script>
 </html>
