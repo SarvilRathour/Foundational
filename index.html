@@ -4,10 +4,26 @@
   </head>
   <body>
     <button id="btn">Fetch</button>
+    <input id ="input" type="text" placeholder="Enter values"/>
+    <button id="inbtn">Send</button>
+    </input>
     <pre id="fetched"></pre>
   </body>
   <script>
       const out=document.getElementById("fetched");
+      const input=document.getElementById("input");
+      document.getElementById("inbtn").addEventListener("click",async()=>{
+        const value=input.value;
+        const res=await fetch("http://localhost:3000/post",{
+          method:"POST",
+          headers:{
+            "Content-Type":"application/json"
+          },
+          body:JSON.stringify({value})
+        })
+        const json=await res.json();
+        out.textContent=JSON.stringify(json,null,2);
+      });
       let clickCount=0;
       document.getElementById("btn").addEventListener("click",async()=>{
         clickCount++;
