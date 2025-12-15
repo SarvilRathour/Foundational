@@ -1,6 +1,6 @@
-import express from "express";
+import express, {Express,Request,Response} from "express";
 import cors from "cors";
-const app=express();
+const app:Express=express();
 app.use(cors());
 app.use(express.json());
 const port:number=3000;
